@@ -1,4 +1,5 @@
 import React from "react";
+import Navbar from "./Navbar";
 
 const RandomFood = ({ data }) => {
   const {
@@ -13,9 +14,9 @@ const RandomFood = ({ data }) => {
     strSource,
   } = data;
   let youtubeUrl = strYoutube.replace("watch?v=", "embed/");
-  console.log(youtubeUrl);
   return (
     <>
+      <Navbar />
       <center className="mb-20 text-4xl font-bold ">{strMeal}</center>
       <section className="py-10  lg:py-0 mb-10">
         <div className="px-4 mx-auto sm:px-6 lg:px-8 max-w-7xl">

@@ -1,4 +1,3 @@
-
 module.exports = {
   content: [
     "./pages/**/*.{js,ts,jsx,tsx}",
@@ -7,8 +6,6 @@ module.exports = {
   theme: {
     extend: {},
   },
-  daisyui: {
-    themes: ["cyberpunk"],
-  },
-  plugins: [ require("daisyui")],
+
+  plugins: [require("@tailwindcss/line-clamp")],
 };
