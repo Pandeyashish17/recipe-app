@@ -1,6 +1,7 @@
+import Link from "next/link";
 import React from "react";
 
-const HeroSection = ({ categories }) => {
+const HeroSection = ({ categories, data }) => {
   return (
     <>
       <section className="pt-5">
@@ -9,44 +10,47 @@ const HeroSection = ({ categories }) => {
             <div className="flex flex-col md:flex-row">
               <aside className="md:w-1/4 flex-auto mb-4 pr-4 md:mb-0">
                 <ul>
-                {categories.slice(0,10).map((category,i)=>{
+                  {categories.slice(0, 10).map((category, i) => {
                     return (
                       <li key={i}>
-                        <a
+                        <Link
+                          href={`/tag/${category.strCategory}`}
                           className="block px-3 py-2 hover:bg-blue-50 rounded-md hover:text-blue-600"
-                          href="#"
                         >
                           {category.strCategory}
-                        </a>
+                        </Link>
                       </li>
                     );
-                })}
-                 
+                  })}
                 </ul>
               </aside>
               <main className="md:w-3/4 flex-auto">
                 {/* <!-- banner-main --> */}
-                <article className="bg-blue-500 p-6 lg:p-16 rounded w-full h-full">
-                  <h1 className="text-3xl md:text-4xl text-white font-semibold">
-                    Best products &amp; <br />
-                    brands in our store
+                <article
+                  className=" p-6 lg:p-16 rounded w-full h-full"
+                  style={{
+                    backgroundImage: `url(${data.strMealThumb})`,
+                    // backgroundSize: "cover",
+                    backgroundPosition: "center",
+                    backgroundAttachment: "fixed",
+                  }}
+                >
+                  <h1 className="text-3xl md:text-4xl text-black font-semibold">
+                    {data.strMeal}
                   </h1>
                   <p className="text-lg text-white font-normal mt-4 mb-6">
-                    Trendy Products, Factory Prices, Excellent Service
+                    Tags : {data.strTags ? data.strTags : "No Tags"}
+                  </p>
+                  <p className="text-lg text-slate-300 font-normal mt-4 mb-6 line-clamp-3">
+                    {data.strInstructions ? data.strInstructions : ""}
                   </p>
                   <div>
-                    <a
+                    <Link
                       className="px-4 py-2 inline-block font-semibold bg-yellow-500 text-white border border-transparent rounded-md hover:bg-yellow-600"
-                      href="#"
+                      href={`/meal/${data.idMeal}`}
                     >
-                      Discover
-                    </a>
-                    <a
-                      className="px-4 py-2 inline-block font-semibold text-blue-600 border border-transparent rounded-md hover:bg-gray-100 bg-white"
-                      href="#"
-                    >
-                      Learn more
-                    </a>
+                      See more
+                    </Link>
                   </div>
                 </article>
                 {/* <!-- banner-main end// --> */}

@@ -6,7 +6,7 @@ import Navbar from "../components/Navbar";
 import PacmanLoader from "react-spinners/PacmanLoader";
 export default function Home() {
   const [category, setCategory] = useState(null);
-  const [data, setData] = useState([]);
+  const [data, setData] = useState(null);
   let letters = [
     "a",
     "b",
@@ -54,14 +54,14 @@ export default function Home() {
 
   return (
     <>
-      {!category ? (
+      {!category || !data ? (
         <div className="min-h-screen grid place-content-center">
           <PacmanLoader color="#00ACEE" />
         </div>
       ) : (
         <>
           <Navbar />
-          <HeroSection categories={category} />
+          <HeroSection categories={category} data={data && data[0]} />
           <section class="py-10 px-3">
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 gap-4">
               {data?.map((item, i) => {
